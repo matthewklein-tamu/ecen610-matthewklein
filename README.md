@@ -1,2 +1,2 @@
 # ecen610-matthewklein
-GitHub with ECEN610 labs.
+Matthew Klein's ECEN 610 labs.
