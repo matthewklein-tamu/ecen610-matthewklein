@@ -209,7 +209,7 @@ signal_power = signal_power * (1.97) # Account for spread of signal power, hammi
 print("Blackman:")
 print(10*np.log10(signal_power/noise_power))
 
-# normalize hamming
+# normalize blackman
 
 plt.plot(blackman_freq, 10*np.log10(psd_blackman/max(psd_blackman)))
 plt.title('Plot of Power Spectral Density (Hamming) (Normalized)')
