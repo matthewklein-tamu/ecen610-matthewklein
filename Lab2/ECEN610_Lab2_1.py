@@ -36,7 +36,7 @@ tone = A * np.cos(2 * np.pi * ft * nTs) # cos(2 * pi * fin/Fs * n)
 # SNR = 50 dB, N = 8
 
 # Finding the variance of the Gaussian noise needed to produce the target SNR
-snrVariance = ((1 / (2**8))**2) / 12
+snrVariance = ((1 / (2**8))**2) / 12 # Change 8 to a different number to change variance.
 snrSTD = snrVariance**0.5
 
 # Add Gaussian noise to the sampled sine wave such that the signal SNR is 50 dB
@@ -95,7 +95,7 @@ print(10*np.log10(signal_power/noise_power))
 
 # What would be the variance of a uniformly distributed noise to obtain the same SNR.
 
-UniformNoise = np.random.uniform(0, 2*snrSTD, len(nTs)) # Approximately double the variance
+UniformNoise = np.random.uniform(0, (2)*snrSTD, len(nTs))
 Uniform_noisy_sample = tone + UniformNoise
 Uniform_DFTNoisy = np.fft.fft(Uniform_noisy_sample, 200)
 Uniform_DFTNoisy_freq = np.fft.fftfreq(200, 1/Fs)
@@ -212,7 +212,7 @@ print(10*np.log10(signal_power/noise_power))
 # normalize blackman
 
 plt.plot(blackman_freq, 10*np.log10(psd_blackman/max(psd_blackman)))
-plt.title('Plot of Power Spectral Density (Hamming) (Normalized)')
+plt.title('Plot of Power Spectral Density (Blackman) (Normalized)')
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Power/Frequency (dB/Hz)')
 plt.grid()
